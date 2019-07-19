@@ -1,5 +1,6 @@
 import zmq
 
+
 def get_ip_address_():
     user_input = (input("Enter ip adress to connect to:"))
     if user_input != '':
@@ -7,6 +8,7 @@ def get_ip_address_():
     else:
         usr_input = '127.0.0.1'
     return usr_input
+
 
 context = zmq.Context()
 
