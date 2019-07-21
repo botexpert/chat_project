@@ -1,10 +1,13 @@
 import time
 import zmq
+
+
 def history_delete(history_file):
     delete = open(history_file, 'w')
     delete.write('')
     delete.close()
     return 'History deleted'
+
 
 def show_history(history_file):
     message =''

@@ -1,6 +1,5 @@
 import zmq
 from multiprocessing import Process
-
 # print("Current libzmq version is %s" % zmq.zmq_version())
 # print("Current  pyzmq version is %s" % zmq.__version__)
 
@@ -41,6 +40,9 @@ print('Connecting to server on %s…' % socket_connect_address)
 
 # Connection to server on ip adress provided by user
 socket.connect('tcp://%s:5555' % socket_connect_address)
+
+#message = zmq.m
+
 while True:
     message = input('Send mesage: ')
 
@@ -55,5 +57,9 @@ while True:
         continue
 
     #  Get the reply.
-    message_server = socket.recv_string()
-    print('Received reply : \n %s [ %s ]' % (socket_connect_address, message_server))
+    try:
+        message_server = socket.recv_string(flags=0)
+        print('Received reply : \n %s [ %s ]' % (socket_connect_address, message_server))
+    except zmq.error:
+        continue
+#    print('Received reply : \n %s [ %s ]' % (socket_connect_address, message_server))
